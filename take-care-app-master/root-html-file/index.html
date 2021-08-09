@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *  data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * data: blob: 'unsafe-inline'; font-src * data: blob: 'unsafe-inline';">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Take Care</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="index-styles.css">
+
+    <script src="404.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
+    <meta name="importmap-type" content="systemjs-importmap">
+    <script type="systemjs-importmap">
+        { "imports": { "navbar": "http://localhost:4400/main.js", "recommendations": "http://localhost:4300/main.js", "healthstats": "http://localhost:4301/main.js", "weatherstats": "http://localhost:4302/main.js", "chatstats": "http://localhost:4303/main.js",
+        "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/5.5.0/system/single-spa.min.js" } }
+    </script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/5.5.0/system/single-spa.min.js" as="script" crossorigin="anonymous" />
+    <script src='https://unpkg.com/core-js-bundle@3.1.4/minified.js'></script>
+    <script src="https://unpkg.com/zone.js"></script>
+    <script src="https://unpkg.com/import-map-overrides@1.15.1/dist/import-map-overrides.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/system.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/amd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-exports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-register.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        var appList = ['recommendations', 'healthstats', 'weatherstats', 'chatstats'];
+        var defaultApp = 'recommendations';
+
+        var _healthparams = {};
+        var _weatherparams = {};
+
+        System.import('single-spa').then(function(singleSpa) {
+
+            appList.forEach(appName => {
+
+                // singleSpa.registerApplication(
+                //   appName,
+                //   function(){
+                //     return System.import(appName);
+                //   },
+                //   function(location){
+                //     if(appName == defaultApp){
+                //       return location.pathname == '/' || location.pathname == '/' + appName;
+                //     }else{
+                //       return location.pathname == '/' + appName;
+                //     }
+                //   }
+                // );
+
+                singleSpa.registerApplication({
+                    name: appName,
+                    app: () => System.import(appName),
+                    activeWhen: '/' + appName,
+                    customProps: () => {
+                        if (appName == defaultApp) {
+                            return {
+                                healthParams: _healthparams,
+                                weatherParams: _weatherparams
+                            }
+                        } else return {}
+                    }
+                })
+            });
+
+            singleSpa.start();
+            singleSpa.navigateToUrl('/' + defaultApp);
+
+            singleSpa.addErrorHandler(err => {
+                if ('/' + err.appOrParcelName == window.location.pathname) {
+                    $('#page-not-found').html(errorpage).addClass('active');
+                } else {
+                    $('#page-not-found').removeClass('active').html('');
+                }
+            });
+
+            window.addEventListener('single-spa:app-change', (evt) => {
+                $('.' + evt.detail.appsByNewStatus.MOUNTED.toString() + '-wrapper').addClass('active');
+                $('.' + evt.detail.appsByNewStatus.NOT_MOUNTED.toString() + '-wrapper').removeClass('active');
+            });
+
+            $(function() {
+
+                $('.app-links').click(ev => {
+                    ev.preventDefault();
+
+                    $('.app-links').removeClass('active-button');
+                    $(ev.target).addClass('active-button');
+                    if (ev.target.id.includes(defaultApp)) {
+                        $(ev.target).removeClass('new-notification');
+                    }
+                    singleSpa.navigateToUrl(ev.target.id.toLowerCase().replace('link', ''));
+                });
+
+            });
+        })
+
+
+        $(function() {
+            document.addEventListener('dataFromWeatherApp', (e) => {
+                if (e.detail) {
+                    console.log('w_before', _weatherparams);
+                    _weatherparams = e.detail;
+                    console.log('w_after', _weatherparams);
+                    highlightNotification();
+                }
+            });
+        })
+
+        $(function() {
+            document.addEventListener('dataFromHealthProfile', (e) => {
+                if (e.detail) {
+                    console.log('h_before', _healthparams);
+                    _healthparams = e.detail;
+                    console.log('h_after', _healthparams);
+                    highlightNotification();
+                }
+            });
+        })
+
+        function highlightNotification() {
+            $("#" + defaultApp + "Link").addClass('new-notification');
+        }
+    </script>
+    <div class="container index-container">
+
+        <div class="tc-profile-wrapper">
+            <div class="profile-controls">
+                <div class="centre-control">
+                    <div class="profile-title">
+                        take care
+                    </div>
+                    <div class="profile-username">
+                        _________
+                    </div>
+                </div>
+            </div>
+
+            <!--keep background ellipses mark-up at bottom-->
+            <div class="ellipse ellipse1"></div>
+            <div class="ellipse ellipse2"></div>
+        </div>
+
+        <div class="app-wrapper">
+            <div class="recommendations-wrapper">
+                <div id="single-spa-application:recommendations"></div>
+            </div>
+            <div class="healthstats-wrapper">
+                <div id="single-spa-application:healthstats"></div>
+            </div>
+            <div class="weatherstats-wrapper">
+                <div id="single-spa-application:weatherstats"></div>
+            </div>
+            <div class="chatstats-wrapper">
+                <div id="single-spa-application:chatstats"></div>
+            </div>
+            <div id="page-not-found"></div>
+        </div>
+
+
+        <div class="apps-content">
+            <div class="apps-list">
+                <a href="recommendations" id="recommendationsLink" class="btn-link app-links active-button">Recommendations<span class="pulsating-circle-nav"></span></a>
+                <a href="healthstats" id="healthstatsLink" class="btn-link app-links">My Health & Care</a>
+                <a href="weatherstats" id="weatherstatsLink" class="btn-link app-links">Weather</a>
+                <a href="chatstats" id="chatstatsLink" class="btn-link app-links">Chat Box</a>
+            </div>
+        </div>
+
+    </div>
+
+    <import-map-overrides-full></import-map-overrides-full>
+</body>
+
+</html>

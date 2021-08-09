@@ -1,0 +1,50 @@
+<div class="patient-profile-wrapper">
+    <div class="scrollable-page">
+        <div class="profile">
+            <img src="https://webstockreview.net/images/faces-clipart-many-woman-5.jpg" alt="natasha_campbell" class="profile-photo">
+
+            <div class="username">{{userData.fullName.value}}</div>
+            <div class="userid">{{userData.patientID.value}}</div>
+
+        </div>
+
+        <div class="patient-data">
+            <div>
+                <span>{{userData.age.value}}</span>
+                <div>Age</div>
+            </div>
+
+            <div class="bmi">
+                <span>{{userData.bmi.value}}</span>
+                <div>BMI</div>
+            </div>
+
+            <div>
+                <span>{{userData.sex.value}}</span>
+                <div>Sex</div>
+            </div>
+        </div>
+
+
+        <div class="info-auth-msg" *ngIf="showInfoBox">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            <span>Open eye fields are visible to permitted systems</span>
+            <a (click)="dismissNotification()">Dismiss</a>
+        </div>
+
+        <div class="patient-profile">
+            <hp-app-profile-accordion *ngFor="let section of accordionTemplateDetails | keyvalue: returnZero; let i = index;"
+                [ratioOfSection]="1-(i/(objPrototype.keys(accordionTemplateDetails).length))"
+                (changedField)="updateFieldInPreferences($event)" [sectionFields]="section.value"
+                [sectionHeading]="section.key" [userData]="userData">
+            </hp-app-profile-accordion>
+        </div>
+    </div>
+
+    <div class="cta-container">
+        <button [hidden]="!prefUpdated" class="btn-sm btn-update-pref" (click)="sendDataToTakeCare()">
+            <i class="update-icon fas fa-check"></i>Update Preferences
+        </button>
+    </div>
+
+</div>

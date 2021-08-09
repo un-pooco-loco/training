@@ -1,0 +1,18 @@
+[
+    {
+        "username": "patient1",
+        "password": "patient@121"
+    },
+    {
+        "username": "patient2",
+        "password": "patient@122"
+    },
+    {
+        "username": "patient3",
+        "password": "patient@123"
+    },
+    {
+        "username": "patient4",
+        "password": "patient@124"
+    }
+]

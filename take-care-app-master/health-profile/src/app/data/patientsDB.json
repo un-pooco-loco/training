@@ -1,0 +1,14 @@
+[
+    {
+        "patientID": "FORTPAT03",
+        "fullName": "Natasha Campbell",
+        "sex": "F",
+        "dob": "1993-09-14",
+        "age": 27,
+        "bmi": 21.4,
+        "contact_phone": "(080) 876-5412",
+        "contact_email": "n.campbell@email.me",
+        "contact_emergency": "Rachel Campbell",
+        "contact_emergency_number": "(080) 876-1455"
+    }
+]

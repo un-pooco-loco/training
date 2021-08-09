@@ -1,0 +1,32 @@
+[
+    {
+        "MIN": -20,
+        "MAX": -3,
+        "CLOTHING": "RC25.RC26"
+    },
+    {
+        "MIN": -2,
+        "MAX": 7,
+        "CLOTHING": "RC27.RC28"
+    },
+    {
+        "MIN": 8,
+        "MAX": 18,
+        "CLOTHING": "RC29"
+    },
+    {
+        "MIN": 19,
+        "MAX": 26,
+        "CLOTHING": "RC30"
+    },
+    {
+        "MIN": 27,
+        "MAX": 30,
+        "CLOTHING": "RC31.RC32"
+    },
+    {
+        "MIN": 31,
+        "MAX": 50,
+        "CLOTHING": "RC31.RC33"
+    }
+]

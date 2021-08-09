@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header" id="{{ sectionHeading | lowercase }}">
+        <h5 style="background-color:rgba( 25, 215, 147, {{ratioOfSection}})" class="mb-0">
+            <button class="btn records-btn" type="button" data-toggle="collapse"
+                attr.data-target="#collapse{{ sectionHeading}}" aria-expanded="true"
+                attr.aria-controls="collapse{{ sectionHeading}}">
+                <span class="accordion-btn-text">{{ sectionHeading}}</span>
+                <i class="fa fa-chevron-down accordion-btn-icon" aria-hidden="true"></i>
+            </button>
+        </h5>
+    </div>
+
+    <div id="collapse{{ sectionHeading}}" class="collapse" attr.aria-labelledby="{{ sectionHeading | lowercase }}"
+        data-parent="#profileAccordion">
+        <div class="card-body">
+
+            <div *ngFor="let field of sectionFields" class="field-set">
+                <div class="field-set-field">
+                    <label>{{field.fieldLabel}}</label>
+                    <div id="{{field.fieldKey}}" class="field-wrapper">
+                        <div id="{{field.fieldKey}}">{{ userData[field.fieldKey] ? userData[field.fieldKey]["value"] : "-" }}</div>
+                        <i class="fa" [ngClass]="{'fa-eye': userData[field.fieldKey] && userData[field.fieldKey]['isAccessibleOutside'], 'fa-eye-slash' : !(userData[field.fieldKey] && userData[field.fieldKey]['isAccessibleOutside'])}"
+                            (click)="emitForTogglePreference(field.fieldKey)">
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

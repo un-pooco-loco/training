@@ -1,0 +1,198 @@
+.weatherWrapper {
+    background: #FFFFFF;
+}
+.weatherWrapper .weatherOverlay {
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.topWrap {
+    background: #303030;
+    padding: 28px 19px 0;
+    min-height: 215px;
+    color: #FFFFFF;
+}
+.topWrap .searchWrap span {
+    color: #FFFFFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+.topWrap input {
+    border: 0;
+    outline: none;
+    border-bottom: 1px dashed #FFFFFF;
+    width: 177px;
+    background: transparent;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 2;
+}
+.currentWrap {
+    padding: 30px 0;
+    display: flex;
+}
+.currentWrap .dateText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: right;
+    color: #ffffff;
+    width: 60px;
+}
+.currentWrap img {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    margin: 0 10px;
+}
+.currentWrap .tempText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 41px;
+    width: 76px;
+}
+.currentWrap .weatherText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+.currentWrap .feelsText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+}
+.forecastWrap {
+    padding: 30px 25px 10px 55px;
+    height: 370px;
+    overflow-y: scroll;
+    position: relative;
+}
+.forecastWrap .forecastBlock {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+.forecastWrap .forecastBlock::before {
+    content: "";
+    height: 40px;
+    width: 1px;
+    background-color: rgba(27, 32, 45, .2);
+    position: absolute;
+    top: -30px;
+    left: 80px;
+}
+.forecastWrap .dateText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+    color: rgba(27, 32, 45, .9);
+}
+.forecastWrap img {
+    width: 60px;
+    height: 60px;
+    background: rgba(27, 32, 45, .2);
+    border-radius: 50%;
+    margin: 10px;
+}
+.forecastWrap .descText {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(27, 32, 45, .9);
+}
+
+.scrollbarForecastWrap::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.scrollbarForecastWrap::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.scrollbarForecastWrap::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.unableToast {
+    position: fixed;
+    top: 115px;
+    background: #8fc3f3;
+    width: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 25px;
+    text-align: center;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    animation-name: toast;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+.unableToast i {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    cursor: pointer;
+}
+.week-forecast{
+    font-family: "Roboto";
+    font-weight: normal;
+    color: rgba(27, 32, 45, 1);
+    background: transparent;
+    position: relative;
+}
+.forecast-title{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.share-forecast-btn{
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    border-radius: 4px;
+    color: rgba(27, 32, 45, 1);
+    font-size: 12px;
+    border: 1px solid rgba(27, 32, 45, 1);
+}
+.share-icon{
+    transform: scale(-1, 1);
+    margin-right: 4px;
+}
+@keyframes toast {
+    from {
+        top: 130px; 
+        opacity: 0;
+    }
+    to {
+        top: 115px; 
+        opacity: 1;
+    }
+  }

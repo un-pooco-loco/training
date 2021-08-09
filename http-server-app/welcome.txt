@@ -1,0 +1,1 @@
+Welcome {name}, the meeting will start in 10 minutes

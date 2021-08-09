@@ -1,0 +1,57 @@
+[
+    {
+        "resourceType" : "Medication",
+        "identifier" : "MED1",
+        "code" : "TC_MED1",
+        "status" : "active", // active | inactive | entered-in-error
+        "manufacturer" : "SunPharm",
+        "form" : "capsule", // powder | tablets | capsule +
+        "amount" : 0.01, // Amount of drug in package
+        "ingredient" : [
+            { // Active or inactive ingredient
+            // item[x]: The actual ingredient or content. One of these 2:
+            "itemCodeableConcept" : "MED1_ING1",
+            "isActive" : true, // Active ingredient indicator
+            "strength" : 0.2 // Quantity of ingredient present
+            },
+            { // Active or inactive ingredient
+                // item[x]: The actual ingredient or content. One of these 2:
+                "itemCodeableConcept" : "MED1_ING2",
+                "isActive" : true, // Active ingredient indicator
+                "strength" : 0.05 // Quantity of ingredient present
+                }
+        ],
+        "batch" : { // Details about packaged medications
+          "lotNumber" : "LOT_1", // Identifier assigned to batch
+          "expirationDate" : "2022-06-01" // When batch will expire
+        }
+      },
+
+      {
+        "resourceType" : "Medication",
+        "identifier" : "MED2",
+        "code" : "TC_MED2",
+        "status" : "inactive", // active | inactive | entered-in-error
+        "manufacturer" : "SunPharm",
+        "form" : "powder", // powder | tablets | capsule +
+        "amount" : 0.003, // Amount of drug in package
+        "ingredient" : [
+            { // Active or inactive ingredient
+            // item[x]: The actual ingredient or content. One of these 2:
+            "itemCodeableConcept" : "MED1_ING2",
+            "isActive" : false, // Active ingredient indicator
+            "strength" : 0.2 // Quantity of ingredient present
+            },
+            { // Active or inactive ingredient
+                // item[x]: The actual ingredient or content. One of these 2:
+                "itemCodeableConcept" : "MED1_ING2",
+                "isActive" : true, // Active ingredient indicator
+                "strength" : 0.05 // Quantity of ingredient present
+                }
+        ],
+        "batch" : { // Details about packaged medications
+          "lotNumber" : "LOT_3", // Identifier assigned to batch
+          "expirationDate" : "2021-04-08" // When batch will expire
+        }
+      }
+]

@@ -1,0 +1,29 @@
+[
+    {
+        "MIN": 3,
+        "MAX": 5,
+        "FITNESS": "RF6.RF7",
+        "DIET": "RD1.RD2.RD3.RD4.RD5.RD6"
+    },
+    {
+        "MIN": 6,
+        "MAX": 17,
+        "FITNESS": "RF8.RF9.RF10.RF11.RF12.RF13",
+        "DIET_M": "RD7.RD8.RD9.RD10.RD11",
+        "DIET_F": "RD12.RD13.RD14.RD15.RD16",
+        "DIET": "RD27.RD28"
+    },
+    {
+        "MIN": 18,
+        "MAX": 64,
+        "FITNESS": "RF14.RF15",
+        "DIET_M": "RD17.RD18.RD19.RD20.RD21",
+        "DIET_F": "RD22.RD23.RD24.RD25.RD26"
+    },
+    {
+        "MIN": 65,
+        "MAX": 99,
+        "FITNESS": "RF16.RF17",
+        "DIET": "RD29.RD30.RD31.RD32.RD33"
+    }
+]

@@ -1,0 +1,66 @@
+{
+    "Personal Details": [
+        {
+            "fieldKey": "fullName",
+            "fieldLabel": "Full Name on Record"
+        },
+        {
+            "fieldKey": "dob",
+            "fieldLabel": "Date of Birth"
+        },
+        {
+            "fieldKey": "sex",
+            "fieldLabel": "Sex"
+        },
+        {
+            "fieldKey": "age",
+            "fieldLabel":"Age"
+        },
+        {
+            "fieldKey": "bmi",
+            "fieldLabel": "B.M.I."
+        }
+    ],
+    "Appointments": [
+        {
+            "fieldKey": "future_appointment",
+            "fieldLabel": "Future Appointment"
+        },
+        {
+            "fieldKey": "past_appointment",
+            "fieldLabel": "Past Appointment"
+        }
+    ],
+    "Medication / Prescription": [
+        {
+            "fieldKey": "med_1",
+            "fieldLabel": "(New) For recent eye infection"
+        },
+        {
+            "fieldKey": "med_2",
+            "fieldLabel": "(On going) Vitamin D"
+        },
+        {
+            "fieldKey": "med_3",
+            "fieldLabel": "(Older/Discontinued) Skin Treatment"
+        }
+    ],
+    "Contact": [
+        {
+            "fieldKey": "contact_phone",
+            "fieldLabel": "Phone Number"
+        },
+        {
+            "fieldKey": "contact_email",
+            "fieldLabel": "Email"
+        },
+        {
+            "fieldKey": "contact_emergency",
+            "fieldLabel": "Emergency Contact"
+        },
+        {
+            "fieldKey": "contact_emergency_number",
+            "fieldLabel": "Emergency Contact Number"
+        }
+    ]
+}

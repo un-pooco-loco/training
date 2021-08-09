@@ -1,0 +1,23 @@
+<div class="tc-home-container">
+    <div class="recommendations-content">
+        <div>
+            <div class="recommendations-heading">Our Top Recommendations</div>
+            <ul>
+                <li *ngFor="let area of paramsForRecomm">
+                    <tc-app-recommendations-app
+                     [recommend]="newRecommendations?newRecommendations[area.toString()]:[]"
+                     [config]="tileConfig[area]"
+                     [recommendTitle]="area"
+                     [upcomingRecommendationsNumber]="upcomingPeriod.recommendations[area] && upcomingPeriod.recommendations[area].length ? upcomingPeriod.recommendations[area].length : 0"
+                     (click)="openModal(newRecommendations[area.toString()], tileConfig[area], area)"></tc-app-recommendations-app>
+                </li>
+            </ul>
+            <tc-app-recommendations-modal 
+            *ngIf="openModalVar" 
+            [recommend]="modalRecommend" 
+            [upcomingPeriod]="upcomingPeriod"
+            [title]="modalTitle" 
+            [config]="modalConfig"></tc-app-recommendations-modal>
+        </div>
+    </div>
+</div>

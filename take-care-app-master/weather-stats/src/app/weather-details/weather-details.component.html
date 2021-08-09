@@ -1,0 +1,41 @@
+<div class="weatherWrapper">
+    <div class="topWrap">
+        <div *ngIf="placeName" class="searchWrap text-center">
+            <div *ngIf="weatherInputFocused" (click)="cancelInput(weatherInput)" class="weatherOverlay"></div>
+            <span *ngIf="weatherInputFocused" (click)="cancelInput(weatherInput)"><i class="fas fa-times"></i></span>
+            <span *ngIf="!weatherInputFocused"><i class="fas fa-map-marked-alt"></i></span>
+            <input type="text" [value]="placeName | titlecase" name="City Name" class="text-center" (focus)="weatherInputFocused = true" #weatherInput>
+            <span *ngIf="weatherInputFocused" (click)="getCurrentWeather(weatherInput)" class="check"><i class="fas fa-check"></i></span>
+            <span *ngIf="!weatherInputFocused" (click)="weatherInput.focus()"><i class="fas fa-edit"></i></span>
+        </div>
+        <div class="currentWrap" *ngIf="currentWeather.current">
+            <div class="dateText">Today is <br>{{currentWeather.current.dt * 1000 | date:'E MMM dd':getFormattedTimeZone()}}</div>
+            <img src="{{'http://openweathermap.org/img/wn/'+currentWeather.current.weather[0].icon+'@2x.png'}}">
+            <div>
+                <span class="tempText">{{currentWeather.current?.temp}}<sup>o</sup>C</span><br>
+                <span class="weatherText">{{currentWeather.current.weather[0].main}}</span><br>
+                <span class="feelsText">Feels Like: {{currentWeather.current?.feels_like}}<sup>o</sup>C</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="forecastWrap scrollbarForecastWrap">
+        <ng-container *ngIf="currentWeather.daily">
+            <button (click)="shareData()" class="float-right share-forecast-btn" id="elem"><i class="share-icon fas fa-share-square"></i>Share Forecast</button>
+            <div *ngFor="let weather of currentWeather.daily | slice:1" class="forecastBlock">
+                <div class="dateText">{{weather.dt * 1000| date:'E'}} <br>{{weather.dt * 1000| date:'MMM dd':getFormattedTimeZone()}}</div>
+                <img src="{{'http://openweathermap.org/img/wn/'+weather.weather[0].icon+'.png'}}">
+                <div class="descText">
+                    <span class="tempText">{{weather.temp.day}}<sup>o</sup>C</span><br>
+                    <span class="weatherText">{{weather.weather[0].main}}</span><br>
+                    <span class="feelsText">Feels Like: {{weather.feels_like.day}}<sup>o</sup>C</span>
+                </div>
+            </div>
+        </ng-container>
+        
+    </div>
+    <div class="unableToast" *ngIf='msg.length > 0'>
+        {{msg}}
+        <i class="fa fa-times" aria-hidden="true" (click)="msg = ''"></i>
+    </div>
+</div>

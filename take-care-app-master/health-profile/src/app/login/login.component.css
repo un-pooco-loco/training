@@ -1,0 +1,98 @@
+.login-wrapper {
+    position: absolute;
+    width: 411px;
+    height: 100%;
+    left: 0px;
+    background: linear-gradient(180deg, #48AED8 0%, #0074A3 28.27%);
+}
+
+.login-wrapper >
+    .login-app-name {
+        position: absolute;
+        width: 215px;
+        height: 227px;
+        left: 94px;
+        top: 61px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 55px;
+        line-height: 65px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #FFFFFF;
+    }
+    .fortish {
+        position: absolute;
+        width: 411px;
+        height: 31px;
+        left: 0px;
+        top: 263px;
+        background: #FFFFFF;
+    }
+
+.fortish-text {
+    position: absolute;
+    width: 98px;
+    height: 14px;
+    left: 159px;
+    top: 9px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #19D793;
+
+}
+
+.username {
+    position: absolute;
+    width: 298px;
+    height: 30px;
+    left: 56px;
+    top: 371px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #19D793;
+    background: transparent;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #19D793;
+}
+
+input:focus {   
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #19D793;
+    background: transparent;
+    outline: transparent 0px;
+    color: #19D793;
+}
+
+.password {
+    position: absolute;
+    width: 298px;
+    height: 30px;
+    left: 56px;
+    top: 437px;
+    border-top: none;
+    border-right: none;
+    border-left: none;  
+    border-bottom: 1px solid #19D793;
+    background: transparent;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.login-btn {
+    position: absolute;
+    width: 298px;
+    height: 50px;
+    left: 56px;
+    top: 495px;
+    background: rgba(25, 215, 147, 0.25);
+}

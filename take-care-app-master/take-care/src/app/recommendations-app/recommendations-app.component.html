@@ -1,0 +1,18 @@
+<div class="tile-wrapper" attr.data-id="{{recommendTitle}}"  data-toggle="modal" attr.data-target="#{{recommendTitle | lowercase}}Modal">
+    <div class="icon" [ngClass]="config.styleClass">
+        <i class="fas" [ngClass]="config.icon"></i>
+    </div>
+    <h3>{{recommendTitle | titlecase}}</h3>
+    <h4 *ngIf="recommend.length > 0; else noNew">
+        <span class="pulsating-circle"></span>
+        <div class="recommendations-number-text">{{recommend.length}} new recommendations</div>
+    </h4>
+    <ng-template #noNew>
+        <h4><span class="circle"></span>
+            <div class="recommendations-number-text">No new recommendations</div>
+        </h4>
+    </ng-template>
+    <h4 *ngIf="upcomingRecommendationsNumber" class="upcoming-list-notify text-right">
+        <div class="recommendations-number-text">+ {{upcomingRecommendationsNumber}} upcoming</div>
+    </h4>
+</div>

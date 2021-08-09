@@ -1,0 +1,32 @@
+[
+    {
+        "CONDITION": "Rainy",
+        "CLOTHING": "RC1.RC2",
+        "Season": "monsoon"
+    },
+    {
+        "CONDITION": "thunderstorm",
+        "CLOTHING": "RC3.RC4.RC5",
+        "Season": "monsoon"
+    },
+    {
+        "CONDITION": "Sunny",
+        "CLOTHING": "RC6.RC7.RC8",
+        "Season": "summer"
+    },
+    {
+        "CONDITION": "Hot",
+        "CLOTHING": "RC9.R10.RC11",
+        "Season": "summer"
+    },
+    {
+        "CONDITION": "Cold",
+        "CLOTHING": "RC12.RC13",
+        "Season": "Winter"
+    },
+    {
+        "CONDITION": "Snow",
+        "CLOTHING": "RC14.RC15",
+        "Season": "Winter"
+    }
+]

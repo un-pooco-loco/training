@@ -1,0 +1,45 @@
+.tc-home-container{
+    background-color: #303030;
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Lato;
+    line-height: 1;
+    color: #23E0CA;
+    height: 100%;
+    padding:20px;
+}
+.pinned-section{
+    height: 80px;
+}
+.apps-content{
+    overflow-x: hidden;
+}
+.apps-list{
+    overflow-x: auto;
+}
+.recommendations-content ul, .recommendations-content li {
+    list-style: none;
+}
+.recommendations-content {
+    
+}
+.recommendations-heading {
+    font-family: Lato;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 11px;
+    color: #fff;
+    /* padding-left: 25px; */
+    opacity: 0.65;
+    text-align: center;
+}
+.recommendations-content ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.recommendations-content li {
+    padding: 13px 15px;
+}

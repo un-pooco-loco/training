@@ -1,0 +1,25 @@
+[
+    {
+        "MIN": 15,
+        "MAX": 18,
+        "DIET": "RD40"
+    },
+    {
+        "MIN": 19,
+        "MAX": 22,
+        "FITNESS": "RF1",
+        "DIET": "RD41"
+    },
+    {
+        "MIN": 23,
+        "MAX": 27,
+        "FITNESS": "RF2.RF3",
+        "DIET": "RD42.RD43"
+    },
+    {
+        "MIN": 28,
+        "MAX": 40,
+        "FITNESS": "RF4.RF5",
+        "DIET": "RD44.RD45.RD46.RD47"
+    }
+]

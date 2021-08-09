@@ -1,0 +1,37 @@
+<div class="modal fade recommendation-modal" attr.id="{{title | lowercase}}Modal" tabindex="-1" role="dialog" aria-labelledby="recommendationsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="iconWrap" [ngClass]="config.styleClass"><i class="fa" [ngClass]="config.icon"></i></span>
+                <h5 class="modal-title" id="recommendationsModalLabel">
+                    {{title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                <ul>
+                    <li *ngFor="let rec of recommend">{{convertCodesToText(rec)}}</li>
+                </ul>
+                
+                <div *ngIf="upcomingPeriod.recommendations[title] && upcomingPeriod.recommendations[title].length">
+                    <div class="upcoming-title">Upcoming | {{upcomingPeriod.place}} | {{upcomingPeriod.from * 1000 | date:'E MMM dd'}} - {{upcomingPeriod.to * 1000 | date:'E MMM dd'}}</div>
+                    <ul>
+                        <li *ngFor="let upcomingRec of upcomingPeriod.recommendations[title]">{{convertCodesToText(upcomingRec)}}</li>
+                    </ul>
+
+                </div>
+
+                <div class="empty-recom" *ngIf="upcomingPeriod.recommendations[title].length == 0 && recommend.length == 0">
+                    <i class="icon fas fa-box-open"></i>
+                    <em>
+                        Please Add or modify some of your apps and we will find the best {{title.toLowerCase()}} recommendations for you.
+                    </em>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
